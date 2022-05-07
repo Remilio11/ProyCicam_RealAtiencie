@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
     destination: function(res, file, cb){
         cb(null, `./performance/aermet`)
     }
-})
+});
 
 const upload = multer({storage})
 
@@ -33,6 +33,7 @@ conectDB();
 app.use(express.json());
 
 app.use('/api/registro', require('./routes/persona'));
+app.use('/api/aermet', require('./routes/aermetRouter'));
 
 //Endpoint to Upload files
 app.post('/upload', upload.single('myFile') ,(req, res) => {
