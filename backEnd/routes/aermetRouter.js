@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAermetData } = require('../controllers/aermet/aermetController');
+const { getAermetData, getAermetSFCFile, getAermetPFLFile } = require('../controllers/aermet/aermetController');
 const multer = require('../libs/multer');
 const router = express.Router();
 
@@ -14,5 +14,10 @@ const router = express.Router();
             // 2. NameFile.dat
 // @Access: public
 router.post('/', multer.array('files'), getAermetData);
+
+
+router.post('/getSFC', getAermetSFCFile);
+
+router.post('/getPFL', getAermetPFLFile);
 
 module.exports = router;
